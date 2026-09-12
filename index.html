@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Analisis Kulit & Rekomendasi</title>
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- SECTION 1: GENDER -->
+    <div id="section-gender">
+        <h2>Pilih Gender Anda</h2>
+        <p>Bantu kami memberikan rekomendasi yang paling tepat untuk Anda.</p>
+        <div class="btn-group">
+            <button onclick="setGender('laki-laki')">Laki-Laki</button>
+            <button onclick="setGender('perempuan')">Perempuan</button>
+        </div>
+    </div>
+
+    <!-- SECTION 2: KEBUTUHAN (Hanya untuk Perempuan) -->
+    <div id="section-need" class="hidden">
+        <h2>Apa Kebutuhan Anda?</h2>
+        <p>Pilih fokus rekomendasi produk yang Anda inginkan.</p>
+        <div class="btn-group">
+            <button onclick="setNeed('skincare')">Skincare</button>
+            <button onclick="setNeed('makeup')">Makeup</button>
+        </div>
+    </div>
+
+    <!-- SECTION 3: TES KONDISI KULIT -->
+    <div id="section-assessment" class="hidden">
+        <h2>Analisis Kondisi Kulit</h2>
+        <form id="skinForm">
+            <div class="question-block">
+                <p><strong>1. Bagaimana sensasi kulit wajah Anda setelah mencuci muka?</strong></p>
+                <label><input type="radio" name="q1" value="1" required> Terasa kaku dan tertarik</label>
+                <label><input type="radio" name="q1" value="2"> Biasa saja, tapi sedikit berminyak di hidung/dahi</label>
+                <label><input type="radio" name="q1" value="3"> Cepat terasa berminyak di seluruh wajah</label>
+            </div>
+            
+            <div class="question-block">
+                <p><strong>2. Bagaimana tampilan pori-pori di wajah Anda?</strong></p>
+                <label><input type="radio" name="q2" value="1" required> Hampir tidak terlihat</label>
+                <label><input type="radio" name="q2" value="2"> Terlihat jelas hanya di area T-Zone (Dahi, Hidung, Dagu)</label>
+                <label><input type="radio" name="q2" value="3"> Terlihat jelas dan besar di hampir seluruh wajah</label>
+            </div>
+
+            <button type="button" style="width: 100%; background-color: var(--primary-color); color: white;" onclick="calculateSkinType()">Lihat Hasil Diagnosis</button>
+        </form>
+    </div>
+
+    <!-- SECTION 4: HASIL DIAGNOSIS -->
+    <div id="section-result" class="hidden">
+        <h2>Hasil Diagnosis Kulit</h2>
+        <div class="result-box">
+            <p><strong>Jenis Kulit Anda:</strong> <span id="res-skin-type" style="color: var(--primary-color); font-size: 18px; font-weight: bold; text-transform: uppercase;"></span></p>
+            <p><strong>Fokus Rekomendasi:</strong> <span id="res-need" style="text-transform: capitalize;"></span></p>
+            <hr style="border: 0.5px solid #ddd; margin: 15px 0;">
+            <p><strong>Rekomendasi Produk:</strong></p>
+            <ul id="res-products"></ul>
+        </div>
+        <button style="margin-top: 20px; width: 100%;" onclick="location.reload()">Ulangi Tes</button>
+    </div>
+</div>
+
+<!-- Menghubungkan ke file JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
