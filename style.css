@@ -1,13 +1,15 @@
-/* CSS Dasar untuk tampilan rapi dan modern */
+/* Tema Estetik Modern & Minimalis */
 :root {
-    --primary-color: #4A90E2;
-    --bg-color: #F5F7FA;
+    --primary-color: #E5989B;     /* Soft Rose / Blush Pink */
+    --primary-hover: #B5838D;     /* Muted Mauve */
+    --bg-color: #F8EDEB;          /* Very Light Nude Pink */
     --card-bg: #FFFFFF;
-    --text-color: #333333;
+    --text-color: #22223B;        /* Dark Navy/Charcoal untuk teks elegan */
+    --border-color: #FFCDD2;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
@@ -20,74 +22,153 @@ body {
 
 .container {
     background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    max-width: 500px;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(181, 131, 141, 0.15);
+    max-width: 550px;
     width: 100%;
     text-align: center;
+    position: relative;
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
+    color: var(--primary-hover);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+p.subtitle {
+    font-size: 14px;
+    color: #6D6875;
+    margin-bottom: 30px;
 }
 
 .hidden {
     display: none !important;
 }
 
+/* Animasi transisi antar halaman */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tombol */
 .btn-group {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-top: 20px;
 }
+.row-btns {
+    flex-direction: row;
+    justify-content: center;
+}
+.row-btns button {
+    flex: 1;
+}
 
 button {
-    padding: 12px 20px;
+    padding: 14px 20px;
     border: 2px solid var(--primary-color);
     background-color: white;
-    color: var(--primary-color);
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
+    color: var(--primary-hover);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
-
-button:hover {
+button:hover, .btn-primary {
     background-color: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 15px rgba(229, 152, 155, 0.4);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-hover);
+}
+.btn-secondary {
+    border-color: #E0E0E0;
+    color: #757575;
+}
+.btn-secondary:hover {
+    background-color: #F5F5F5;
+    color: #424242;
+    border-color: #BDBDBD;
+    box-shadow: none;
 }
 
+/* Pertanyaan Lab */
 .question-block {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
 }
-
+.question-block p {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: var(--primary-hover);
+}
 .question-block label {
     display: block;
-    margin: 10px 0;
+    margin: 8px 0;
     cursor: pointer;
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    background: #FAFAFA;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #EEEEEE;
+    font-size: 14px;
+    transition: all 0.2s ease;
 }
-
 .question-block label:hover {
-    background: #eef5ff;
+    background: #FFF5F5;
+    border-color: var(--primary-color);
+}
+input[type="radio"] {
+    accent-color: var(--primary-color);
+    margin-right: 10px;
 }
 
-.result-box {
-    background-color: #eef5ff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: left;
+/* Kotak Hasil & Penutup */
+.result-box, .closing-box {
+    background-color: #FFF5F5;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
     margin-top: 20px;
 }
-
-.result-box ul {
-    padding-left: 20px;
+.closing-box {
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+.closing-box h2 {
+    font-size: 28px;
+    color: var(--primary-hover);
+}
+.highlight-text {
+    font-size: 24px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+.custom-list {
+    text-align: left;
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.custom-list li {
+    margin-bottom: 10px;
 }

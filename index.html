@@ -3,70 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pakar Analisis Kulit & Rekomendasi</title>
-    <!-- Menghubungkan ke file CSS -->
+    <title>GlowCheck: Analisis Kulit & Estetika</title>
+    <!-- Font Poppins untuk kesan modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
     <!-- SECTION 1: GENDER -->
-    <div id="section-gender">
+    <div id="section-gender" class="fade-in">
         <h2>Pilih Gender Anda</h2>
-        <p>Bantu kami memberikan rekomendasi yang paling tepat untuk Anda.</p>
+        <p>Bantu kami menyesuaikan diagnosis dan rekomendasi yang paling tepat.</p>
         <div class="btn-group">
             <button onclick="setGender('laki-laki')">Laki-Laki</button>
             <button onclick="setGender('perempuan')">Perempuan</button>
         </div>
     </div>
 
-    <!-- SECTION 2: KEBUTUHAN (Hanya untuk Perempuan) -->
-    <div id="section-need" class="hidden">
-        <h2>Apa Kebutuhan Anda?</h2>
-        <p>Pilih fokus rekomendasi produk yang Anda inginkan.</p>
+    <!-- SECTION 2: KEBUTUHAN (Khusus Perempuan) -->
+    <div id="section-need" class="hidden fade-in">
+        <h2>Apa Fokus Anda Hari Ini?</h2>
+        <p>Pilih preferensi rekomendasi yang ingin Anda dapatkan nanti.</p>
         <div class="btn-group">
-            <button onclick="setNeed('skincare')">Skincare</button>
-            <button onclick="setNeed('makeup')">Makeup</button>
+            <button onclick="setNeed('skincare')">Skincare Routine</button>
+            <button onclick="setNeed('makeup')">Makeup Flawless</button>
         </div>
     </div>
 
-    <!-- SECTION 3: TES KONDISI KULIT -->
-    <div id="section-assessment" class="hidden">
-        <h2>Analisis Kondisi Kulit</h2>
+    <!-- SECTION 3: TES KONDISI KULIT (10 Pertanyaan) -->
+    <div id="section-assessment" class="hidden fade-in">
+        <h2>Skin Assessment Lab</h2>
+        <p class="subtitle">Jawab 10 pertanyaan ini sesuai dengan kondisi kulitmu sehari-hari.</p>
         <form id="skinForm">
+            <!-- P1 -->
             <div class="question-block">
                 <p><strong>1. Bagaimana sensasi kulit wajah Anda setelah mencuci muka?</strong></p>
-                <label><input type="radio" name="q1" value="1" required> Terasa kaku dan tertarik</label>
-                <label><input type="radio" name="q1" value="2"> Biasa saja, tapi sedikit berminyak di hidung/dahi</label>
-                <label><input type="radio" name="q1" value="3"> Cepat terasa berminyak di seluruh wajah</label>
+                <label><input type="radio" name="q1" value="1" required> Terasa kaku, ketat, dan tertarik</label>
+                <label><input type="radio" name="q1" value="2"> Normal di pipi, tapi sedikit berminyak di hidung/dahi</label>
+                <label><input type="radio" name="q1" value="3"> Cepat terasa licin dan berminyak di seluruh wajah</label>
             </div>
-            
+            <!-- P2 -->
             <div class="question-block">
                 <p><strong>2. Bagaimana tampilan pori-pori di wajah Anda?</strong></p>
-                <label><input type="radio" name="q2" value="1" required> Hampir tidak terlihat</label>
+                <label><input type="radio" name="q2" value="1" required> Sangat rapat, hampir tidak terlihat</label>
                 <label><input type="radio" name="q2" value="2"> Terlihat jelas hanya di area T-Zone (Dahi, Hidung, Dagu)</label>
-                <label><input type="radio" name="q2" value="3"> Terlihat jelas dan besar di hampir seluruh wajah</label>
+                <label><input type="radio" name="q2" value="3"> Terlihat besar dan jelas di hampir seluruh area wajah</label>
+            </div>
+            <!-- P3 -->
+            <div class="question-block">
+                <p><strong>3. Seberapa sering Anda mengalami masalah jerawat atau komedo?</strong></p>
+                <label><input type="radio" name="q3" value="1" required> Sangat jarang, kulit lebih sering terkelupas</label>
+                <label><input type="radio" name="q3" value="2"> Kadang-kadang, biasanya muncul di area hidung atau dahi</label>
+                <label><input type="radio" name="q3" value="3"> Sangat sering dan mudah berjerawat di mana saja</label>
+            </div>
+            <!-- P4 -->
+            <div class="question-block">
+                <p><strong>4. Bagaimana tampilan wajah Anda saat siang hari (setengah hari beraktivitas)?</strong></p>
+                <label><input type="radio" name="q4" value="1" required> Terlihat kusam atau *matte*</label>
+                <label><input type="radio" name="q4" value="2"> Mengkilap hanya di area tengah wajah (T-Zone)</label>
+                <label><input type="radio" name="q4" value="3"> Sangat mengkilap dan berminyak di seluruh wajah</label>
+            </div>
+            <!-- P5 -->
+            <div class="question-block">
+                <p><strong>5. Bagaimana reaksi kulit Anda saat berada di ruangan ber-AC terlalu lama?</strong></p>
+                <label><input type="radio" name="q5" value="1" required> Sangat kering, gatal, atau mengelupas</label>
+                <label><input type="radio" name="q5" value="2"> Terasa biasa saja, hanya sedikit kering di pipi</label>
+                <label><input type="radio" name="q5" value="3"> Tetap lembap dan memproduksi minyak seperti biasa</label>
+            </div>
+            <!-- P6 -->
+            <div class="question-block">
+                <p><strong>6. Saat menggunakan makeup (foundation/bedak), apa masalah utamanya?</strong></p>
+                <label><input type="radio" name="q6" value="1" required> Cepat *crack* (pecah) atau terlihat *patchy* (mengelupas)</label>
+                <label><input type="radio" name="q6" value="2"> Luntur/longsor hanya di bagian hidung dan dahi</label>
+                <label><input type="radio" name="q6" value="3"> Cepat luntur, mencair, atau bergeser di seluruh wajah</label>
+            </div>
+            <!-- P7 -->
+            <div class="question-block">
+                <p><strong>7. Bagaimana tekstur kulit Anda saat disentuh dengan jari?</strong></p>
+                <label><input type="radio" name="q7" value="1" required> Terasa agak kasar, tipis, atau bersisik</label>
+                <label><input type="radio" name="q7" value="2"> Halus di pipi, tapi terasa berminyak di hidung</label>
+                <label><input type="radio" name="q7" value="3"> Terasa tebal, licin, dan lengket</label>
+            </div>
+            <!-- P8 -->
+            <div class="question-block">
+                <p><strong>8. Seberapa sering Anda merasa butuh memakai pelembap (moisturizer)?</strong></p>
+                <label><input type="radio" name="q8" value="1" required> Sangat butuh, bisa diaplikasikan berulang kali</label>
+                <label><input type="radio" name="q8" value="2"> Cukup sekali sehari, itu pun hanya sedikit</label>
+                <label><input type="radio" name="q8" value="3"> Menghindarinya karena membuat wajah terasa gerah/berat</label>
+            </div>
+            <!-- P9 -->
+            <div class="question-block">
+                <p><strong>9. Bagaimana reaksi kulit Anda saat terkena paparan sinar matahari?</strong></p>
+                <label><input type="radio" name="q9" value="1" required> Mudah memerah, perih, dan terasa sangat kering</label>
+                <label><input type="radio" name="q9" value="2"> Normal, kemerahan sedikit tapi cepat mereda</label>
+                <label><input type="radio" name="q9" value="3"> Cepat terlihat kusam dan memproduksi banyak minyak</label>
+            </div>
+            <!-- P10 -->
+            <div class="question-block">
+                <p><strong>10. Apakah Anda memiliki garis halus pada wajah?</strong></p>
+                <label><input type="radio" name="q10" value="1" required> Ya, garis halus mudah terlihat meski di usia muda</label>
+                <label><input type="radio" name="q10" value="2"> Terlihat samar hanya saat berekspresi (senyum/mengerut)</label>
+                <label><input type="radio" name="q10" value="3"> Hampir tidak ada, kulit terasa kencang dan elastis</label>
             </div>
 
-            <button type="button" style="width: 100%; background-color: var(--primary-color); color: white;" onclick="calculateSkinType()">Lihat Hasil Diagnosis</button>
+            <button type="button" class="btn-primary" onclick="calculateSkinType()">Proses Diagnosis</button>
         </form>
     </div>
 
-    <!-- SECTION 4: HASIL DIAGNOSIS -->
-    <div id="section-result" class="hidden">
-        <h2>Hasil Diagnosis Kulit</h2>
+    <!-- SECTION 4: HASIL DIAGNOSIS & PERTANYAAN REKOMENDASI -->
+    <div id="section-diagnosis" class="hidden fade-in">
+        <h2>Diagnosis Selesai!</h2>
         <div class="result-box">
-            <p><strong>Jenis Kulit Anda:</strong> <span id="res-skin-type" style="color: var(--primary-color); font-size: 18px; font-weight: bold; text-transform: uppercase;"></span></p>
-            <p><strong>Fokus Rekomendasi:</strong> <span id="res-need" style="text-transform: capitalize;"></span></p>
-            <hr style="border: 0.5px solid #ddd; margin: 15px 0;">
-            <p><strong>Rekomendasi Produk:</strong></p>
-            <ul id="res-products"></ul>
+            <p>Berdasarkan analisis sistem pakar, jenis kulit Anda adalah:</p>
+            <h3 id="diagnosis-skin-type" class="highlight-text"></h3>
         </div>
-        <button style="margin-top: 20px; width: 100%;" onclick="location.reload()">Ulangi Tes</button>
+        <p style="margin-top:20px;">Apakah Anda ingin melihat rekomendasi <strong id="diagnosis-need"></strong> khusus untuk kulit Anda?</p>
+        <div class="btn-group row-btns">
+            <button class="btn-primary" onclick="showRecommendations()">Ya, Tampilkan!</button>
+            <button class="btn-secondary" onclick="showClosing()">Tidak, Terima Kasih</button>
+        </div>
+    </div>
+
+    <!-- SECTION 5: DAFTAR REKOMENDASI -->
+    <div id="section-recommendation" class="hidden fade-in">
+        <h2>Rekomendasi Personal Anda</h2>
+        <div class="result-box">
+            <p><strong>Fokus:</strong> <span id="res-need-title" style="text-transform: capitalize;"></span></p>
+            <hr style="border: 0.5px solid #E5989B; margin: 15px 0;">
+            <ul id="res-products" class="custom-list"></ul>
+        </div>
+        <button class="btn-outline" style="margin-top: 20px; width: 100%;" onclick="location.reload()">Selesai & Ulangi Tes</button>
+    </div>
+
+    <!-- SECTION 6: PENUTUP (Jika menolak rekomendasi) -->
+    <div id="section-closing" class="hidden fade-in">
+        <div class="closing-box">
+            <h2>Terima Kasih! ✨</h2>
+            <p>Semoga hasil diagnosis ini membantumu lebih memahami kondisi kulitmu. Tetap percaya diri dan rawat kulitmu dengan baik!</p>
+            <button class="btn-outline" style="margin-top: 20px;" onclick="location.reload()">Kembali ke Halaman Awal</button>
+        </div>
     </div>
 </div>
 
-<!-- Menghubungkan ke file JavaScript -->
 <script src="script.js"></script>
 </body>
 </html>
